@@ -1,0 +1,10 @@
+{
+  "identity": "0x0bf50994245ab3297ed95665d62192977930fabb",
+  "job": "0x2747fc4601933c7bdfeaddf52808a1c0bedc2323",
+  "market": "0x79718fbd092276124d5bfed596e91f861d78a547",
+  "orchestrator": "0x925a80a447dddb7726a24fabc07fd22b76c4e7c1",
+  "retainer": "0x9ca8bf8a090a2607d14e6cb0228e02ebd3d3329d",
+  "staking": "0xbbab7b7ed776e169eb6f0284d97f03cef3c5ecef",
+  "dao": "0x256658aa7be4e4a066d002f9fecd8e60f8efcbb7",
+  "factory": "0x1e2e8abfa05b0df0c83af5de3580a79f6c7f6398"
+}

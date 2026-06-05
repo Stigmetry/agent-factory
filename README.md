@@ -1,6 +1,6 @@
 # Arc Agent Factory — Layer 8
 
-One-click agent deployment across the full 7-layer Arc agentic commerce stack.
+One-click agent deployment across the full 8-layer Arc agentic commerce stack.
 
 ## What It Does
 
@@ -13,23 +13,25 @@ AgentFactory lets anyone deploy a fully configured AI agent in a single transact
 
 Plus a **template registry** for common agent archetypes — one-click deploy a "Freelance Dev", "Content Creator", or "Security Auditor" without configuring each layer manually.
 
-## Deployed Contract
-
-| Contract | Address | Network |
-|----------|---------|---------|
-| AgentFactory | [`0xbffff5f60851fc4eb51c0876fe76165a5d9a3f88`](https://testnet.arcscan.app/address/0xbffff5f60851fc4eb51c0876fe76165a5d9a3f88) | Arc Testnet (Chain ID 5042002) |
-
-## Connected Layers
+## Deployed Contracts (V3 — Full Stack Redeploy)
 
 | Layer | Contract | Address |
 |-------|----------|---------|
-| 1 | AgentIdentity V2 (ERC-8004) | `0x0bf50994245ab3297ed95665d62192977930fabb` |
-| 2 | AgentJob (ERC-8183) | `0xD698d15F776279c0213444a779941e8E0Cbe5094` |
-| 3 | AgentMarket | `0x6BAf93EB026b7BC3db651065302D1934Ad577ec1` |
-| 4 | AgentOrchestrator | `0xbA99f039b7892d9F546253444c95EDea822471b0` |
-| 5 | AgentRetainer | `0x5C80B95Ac3c2eE748F427aBB15Ad5d3E94fcD8D6` |
-| 6 | AgentStaking | `0x0107BD44E269888F12dCc32E9bc03E79Ca7Be770` |
-| 7 | AgentDAO | `0x213157853e67BC17F4b69B8F3f5b0fe14C64fCf7` |
+| 8 | AgentFactory | [`0x1e2e8abfa05b0df0c83af5de3580a79f6c7f6398`](https://testnet.arcscan.app/address/0x1e2e8abfa05b0df0c83af5de3580a79f6c7f6398) |
+| 1 | AgentIdentity V2 (ERC-8004) | [`0x0bf50994245ab3297ed95665d62192977930fabb`](https://testnet.arcscan.app/address/0x0bf50994245ab3297ed95665d62192977930fabb) |
+
+All on Arc Testnet (Chain ID 5042002).
+
+## Connected Layers (V3)
+
+| Layer | Contract | Address |
+|-------|----------|---------|
+| 2 | AgentJob (ERC-8183) | `0x2747fc4601933c7bdfeaddf52808a1c0bedc2323` |
+| 3 | AgentMarket | `0x79718fbd092276124d5bfed596e91f861d78a547` |
+| 4 | AgentOrchestrator | `0x925a80a447dddb7726a24fabc07fd22b76c4e7c1` |
+| 5 | AgentRetainer | `0x9ca8bf8a090a2607d14e6cb0228e02ebd3d3329d` |
+| 6 | AgentStaking | `0xbbab7b7ed776e169eb6f0284d97f03cef3c5ecef` |
+| 7 | AgentDAO | `0x256658aa7be4e4a066d002f9fecd8e60f8efcbb7` |
 
 ## Key Functions
 
@@ -81,7 +83,7 @@ function getFactoryStats() external view returns (
 ```
 User calls deployAgent(config)
     │
-    ├── 1. identity.registerAgent(name, metadataURI)  →  ERC-8004 NFT minted
+    ├── 1. identity.registerAgent(name, metadataURI)  →  ERC-8004 minted
     │
     ├── 2. market.listAgent(tokenId, rate, caps)       →  Listed on marketplace
     │
@@ -89,14 +91,31 @@ User calls deployAgent(config)
     │
     ├── 4. usdc.transferFrom → staking.stake(tokenId, amount)  →  Collateral locked
     │
-    └── 5. identity.safeTransferFrom(factory → user)   →  Ownership transferred
+    └── 5. identity.transferAgent(factory → user)      →  Ownership transferred
 ```
 
 ## Stack
 
 - **Contract**: Solidity 0.8.24, deployed via py-solc-x + web3.py
-- **SDK**: TypeScript (coming soon)
-- **MCP Server**: 8+ tools (coming soon)
+- **SDK**: TypeScript (viem) — 16 methods, human-readable USDC conversion
+- **MCP Server**: 10 tools for AI agent integration
+- **Frontend**: 3 pages in arc-agent-hub (/factory, /factory/templates, /factory/[agentId])
+
+## Deployment History
+
+| Version | Date | Notes |
+|---------|------|-------|
+| V1 | 2026-06-05 | Initial deploy — failed because Identity V1 had no transfer function |
+| V2 | 2026-06-05 | Identity V2 (transferAgent) + Factory V2 — e2e tests passing |
+| V3 | 2026-06-05 | Full stack redeploy — all 8 layers pointing to Identity V2 |
+
+## Scripts
+
+- `scripts/deploy.py` — compile + deploy Factory to Arc Testnet
+- `scripts/e2e_test.py` — 7 on-chain tests (template, deploy, profile, stats)
+- `scripts/redeploy/deploy_v2.py` — deploy Identity V2 + Factory V2
+- `scripts/redeploy/redeploy_all.py` — full 8-layer redeploy from GitHub sources
+- `scripts/redeploy/AgentIdentityV2.sol` — Identity with transferAgent + approve
 
 ## License
 

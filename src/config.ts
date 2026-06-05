@@ -18,22 +18,22 @@ export const arcTestnet = defineChain({
 // ─── Deployed Contract Addresses ──────────────────────────────────────────
 
 export const CONTRACTS = {
-  /** Layer 8 — AgentFactory (V2) */
-  factory: "0xbffff5f60851fc4eb51c0876fe76165a5d9a3f88" as const,
+  /** Layer 8 — AgentFactory (V3) */
+  factory: "0x1e2e8abfa05b0df0c83af5de3580a79f6c7f6398" as const,
   /** Layer 1 — AgentIdentity (ERC-8004 V2 with transferAgent) */
   identity: "0x0bf50994245ab3297ed95665d62192977930fabb" as const,
   /** Layer 2 — AgentJob (ERC-8183) */
-  job: "0xD698d15F776279c0213444a779941e8E0Cbe5094" as const,
+  job: "0x2747fc4601933c7bdfeaddf52808a1c0bedc2323" as const,
   /** Layer 3 — AgentMarket */
-  market: "0x6BAf93EB026b7BC3db651065302D1934Ad577ec1" as const,
+  market: "0x79718fbd092276124d5bfed596e91f861d78a547" as const,
   /** Layer 4 — AgentOrchestrator */
-  orchestrator: "0xbA99f039b7892d9F546253444c95EDea822471b0" as const,
+  orchestrator: "0x925a80a447dddb7726a24fabc07fd22b76c4e7c1" as const,
   /** Layer 5 — AgentRetainer */
-  retainer: "0x5C80B95Ac3c2eE748F427aBB15Ad5d3E94fcD8D6" as const,
+  retainer: "0x9ca8bf8a090a2607d14e6cb0228e02ebd3d3329d" as const,
   /** Layer 6 — AgentStaking */
-  staking: "0x0107BD44E269888F12dCc32E9bc03E79Ca7Be770" as const,
+  staking: "0xbbab7b7ed776e169eb6f0284d97f03cef3c5ecef" as const,
   /** Layer 7 — AgentDAO */
-  dao: "0x213157853e67BC17F4b69B8F3f5b0fe14C64fCf7" as const,
+  dao: "0x256658aa7be4e4a066d002f9fecd8e60f8efcbb7" as const,
   /** USDC ERC-20 interface on Arc */
   usdc: "0x3600000000000000000000000000000000000000" as const,
 } as const;
