@@ -17,13 +17,13 @@ Plus a **template registry** for common agent archetypes — one-click deploy a 
 
 | Contract | Address | Network |
 |----------|---------|---------|
-| AgentFactory | [`0x3c606d295a18250eaf889f10158315532c6e827f`](https://testnet.arcscan.app/address/0x3c606d295a18250eaf889f10158315532c6e827f) | Arc Testnet (Chain ID 5042002) |
+| AgentFactory | [`0xbffff5f60851fc4eb51c0876fe76165a5d9a3f88`](https://testnet.arcscan.app/address/0xbffff5f60851fc4eb51c0876fe76165a5d9a3f88) | Arc Testnet (Chain ID 5042002) |
 
 ## Connected Layers
 
 | Layer | Contract | Address |
 |-------|----------|---------|
-| 1 | AgentIdentity (ERC-8004) | `0x5Bef356f89425823FC7eebB3A6ED1A678F3b8233` |
+| 1 | AgentIdentity V2 (ERC-8004) | `0x0bf50994245ab3297ed95665d62192977930fabb` |
 | 2 | AgentJob (ERC-8183) | `0xD698d15F776279c0213444a779941e8E0Cbe5094` |
 | 3 | AgentMarket | `0x6BAf93EB026b7BC3db651065302D1934Ad577ec1` |
 | 4 | AgentOrchestrator | `0xbA99f039b7892d9F546253444c95EDea822471b0` |

@@ -18,10 +18,10 @@ export const arcTestnet = defineChain({
 // ─── Deployed Contract Addresses ──────────────────────────────────────────
 
 export const CONTRACTS = {
-  /** Layer 8 — AgentFactory */
-  factory: "0x3c606d295a18250eaf889f10158315532c6e827f" as const,
-  /** Layer 1 — AgentIdentity (ERC-8004) */
-  identity: "0x5Bef356f89425823FC7eebB3A6ED1A678F3b8233" as const,
+  /** Layer 8 — AgentFactory (V2) */
+  factory: "0xbffff5f60851fc4eb51c0876fe76165a5d9a3f88" as const,
+  /** Layer 1 — AgentIdentity (ERC-8004 V2 with transferAgent) */
+  identity: "0x0bf50994245ab3297ed95665d62192977930fabb" as const,
   /** Layer 2 — AgentJob (ERC-8183) */
   job: "0xD698d15F776279c0213444a779941e8E0Cbe5094" as const,
   /** Layer 3 — AgentMarket */

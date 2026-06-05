@@ -12,7 +12,7 @@ interface IERC20 {
     function balanceOf(address account) external view returns (uint256);
 }
 
-/// @dev Layer 1 — ERC-8004 AgentIdentity
+/// @dev Layer 1 — ERC-8004 AgentIdentity (V2 with transfer support)
 interface IAgentIdentity {
     struct AgentIdentity {
         address owner;
@@ -24,9 +24,7 @@ interface IAgentIdentity {
     }
     function registerAgent(string calldata name, string calldata metadataURI) external returns (uint256 tokenId);
     function getAgent(uint256 tokenId) external view returns (AgentIdentity memory);
-    function ownerOf(uint256 tokenId) external view returns (address);
-    function safeTransferFrom(address from, address to, uint256 tokenId) external;
-    function approve(address to, uint256 tokenId) external;
+    function transferAgent(uint256 tokenId, address newOwner) external;
 }
 
 /// @dev Layer 3 — AgentMarket
@@ -71,16 +69,6 @@ interface IAgentStaking {
     function getStake(uint256 agentTokenId) external view returns (Stake memory);
 }
 
-/// @dev ERC-721 receiver for safe mints
-interface IERC721Receiver {
-    function onERC721Received(
-        address operator,
-        address from,
-        uint256 tokenId,
-        bytes calldata data
-    ) external returns (bytes4);
-}
-
 // ──────────────────────────────────────────────────────────────────────────────
 
 /// @title AgentFactory — Layer 8 of the Arc agentic commerce stack
@@ -89,7 +77,7 @@ interface IERC721Receiver {
 ///         plans, stakes USDC collateral — all in a single transaction.
 ///         Includes a template registry for common agent archetypes.
 /// @author sethoshi.eth
-contract AgentFactory is IAgentFactory, IERC721Receiver {
+contract AgentFactory is IAgentFactory {
 
     // ─── State ────────────────────────────────────────────────────────────────
 
@@ -144,15 +132,6 @@ contract AgentFactory is IAgentFactory, IERC721Receiver {
             "AgentFactory: not template creator"
         );
         _;
-    }
-
-    // ─── ERC-721 Receiver ─────────────────────────────────────────────────────
-
-    /// @dev Required to receive ERC-721 tokens during agent registration (safeMint)
-    function onERC721Received(address, address, uint256, bytes calldata)
-        external pure override returns (bytes4)
-    {
-        return IERC721Receiver.onERC721Received.selector;
     }
 
     // ─── Agent Deployment ─────────────────────────────────────────────────────
@@ -261,8 +240,8 @@ contract AgentFactory is IAgentFactory, IERC721Receiver {
             staking.stake(agentTokenId, config.stakeAmountUsdc);
         }
 
-        // ── Step 5: Transfer ERC-8004 NFT to deployer ──
-        identity.safeTransferFrom(address(this), deployer, agentTokenId);
+        // ── Step 5: Transfer agent ownership to deployer ──
+        identity.transferAgent(agentTokenId, deployer);
 
         // ── Step 6: Record deployment ──
         _deployedAgents[agentTokenId] = DeployedAgent({
