@@ -1,0 +1,20 @@
+{
+  "name": "arc-agent-factory",
+  "version": "1.0.0",
+  "description": "Agent Factory SDK + MCP Server — Layer 8 of the Arc agentic commerce stack",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "mcp": "node dist/mcp/server.js"
+  },
+  "dependencies": {
+    "viem": "^2.21.0",
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  },
+  "license": "MIT"
+}
