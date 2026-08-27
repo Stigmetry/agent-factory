@@ -99,7 +99,7 @@ User calls deployAgent(config)
 - **Contract**: Solidity 0.8.24, deployed via py-solc-x + web3.py
 - **SDK**: TypeScript (viem) — 16 methods, human-readable USDC conversion
 - **MCP Server**: 10 tools for AI agent integration
-- **Frontend**: 3 pages in arc-agent-hub (/factory, /factory/templates, /factory/[agentId])
+- **Frontend**: 3 pages in agent-hub-main (/factory, /factory/templates, /factory/[agentId])
 
 ## Deployment History
 

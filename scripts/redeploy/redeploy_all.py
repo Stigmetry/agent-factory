@@ -41,12 +41,12 @@ PROXIES = {"https": proxy, "http": proxy} if proxy else {}
 
 # GitHub repos
 REPOS = {
-    "job":          ("sethoshi18", "arc-agent-payments"),
-    "market":       ("sethoshi18", "arc-agent-market"),
-    "orchestrator": ("sethoshi18", "arc-agent-orchestrator"),
-    "retainer":     ("sethoshi18", "arc-agent-retainer"),
-    "staking":      ("sethoshi18", "arc-agent-staking"),
-    "dao":          ("sethoshi18", "arc-agent-dao"),
+    "job":          ("Stigmetry", "agent-payments"),
+    "market":       ("Stigmetry", "agent-market"),
+    "orchestrator": ("Stigmetry", "agent-orchestrator"),
+    "retainer":     ("Stigmetry", "agent-retainer"),
+    "staking":      ("Stigmetry", "agent-staking"),
+    "dao":          ("Stigmetry", "agent-dao"),
 }
 
 # Contract file paths within each repo
